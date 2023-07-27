@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { pods } from './pods'
 
 @Component({
   selector: 'app-pods',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core'
   styleUrls: ['./pods.component.scss']
 })
 export class PodsComponent {
-  pods = [...Array(9).keys()]
+  pods = pods
 }

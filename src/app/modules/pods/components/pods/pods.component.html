@@ -1,5 +1,15 @@
-<div class="grid">
-  <ng-container *ngFor="let pod of pods">
-    <span>pod {{ pod + 1 }}</span>
-  </ng-container>
+<div class="grid-wrapper">
+  <div class="grid">
+    <ng-container *ngFor="let pod of pods">
+      <div class="pod" [ngClass]="pod.dark ? 'dark' : 'light'">
+        <div>
+          <div class="pod-text">{{ pod.text }}</div>
+          <ng-container *ngIf="pod.number != null">
+            <div class="pod-number">{{ pod.number }}</div>
+          </ng-container>
+        </div>
+        <button>{{ pod.buttonText }}</button>
+      </div>
+    </ng-container>
+  </div>
 </div>

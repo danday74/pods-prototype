@@ -1,0 +1,48 @@
+@import 'src/styles/vars';
+
+$headerBgColor: #333C4E;
+$subheaderBgColor: #0E85D4;
+$footerBgColor: #EEE;
+
+.header, .subheader, .footer {
+  position: fixed;
+  width: 100%;
+}
+
+.header {
+  top: 0;
+  height: $headerHeight * 1px;
+  background-color: $headerBgColor;
+  display: flex;
+  align-items: center;
+
+  a {
+    color: #FFF;
+    padding: 10px 20px;
+    background-color: lighten($headerBgColor, 10%);
+    border-radius: 5px;
+    margin: 0 10px;
+    text-decoration: none;
+
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}
+
+.subheader {
+  top: $headerHeight * 1px;
+  height: $subheaderHeight * 1px;
+  background-color: $subheaderBgColor;
+}
+
+.main {
+  margin-top: $headerHeight + $subheaderHeight * 1px;
+}
+
+.footer {
+  bottom: 0;
+  height: $footerHeight * 1px;
+  background-color: $footerBgColor;
+  border-top: 1px solid #DDD;
+}

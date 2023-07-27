@@ -6,6 +6,9 @@ import { PodsComponent } from './components/pods/pods.component'
     declarations: [
         PodsComponent
     ],
+    exports: [
+        PodsComponent
+    ],
     imports: [
         CommonModule
     ]

@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'src/styles/thin-scrollbar';
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+  // font-family: "Lucida Console", sans-serif;
+  font-family: sans-serif;
+  color: #333;
+}
+
+button {
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
