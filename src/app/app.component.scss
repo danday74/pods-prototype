@@ -16,6 +16,11 @@ $footerBgColor: #EEE;
   display: flex;
   align-items: center;
 
+  img.reed-logo {
+    margin: 0 20px;
+    cursor: pointer;
+  }
+
   a {
     color: #FFF;
     padding: 10px 20px;

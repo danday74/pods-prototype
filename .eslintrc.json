@@ -48,7 +48,8 @@
           {
             "allowNullOrUndefined": true
           }
-        ]
+        ],
+        "@angular-eslint/template/alt-text": "off"
       }
     }
   ]
