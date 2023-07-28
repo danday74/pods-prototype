@@ -1,0 +1,15 @@
+<div class="save-pods-modal-overlay">
+  <div class="save-pods-modal">
+    <div class="save-pods-modal-header">
+      <span class="material-icons icon">save</span>
+      <span class="text">Save Pods ({{ type }})</span>
+    </div>
+    <div class="save-pods-modal-body">
+      <input class="form-control" placeholder="pod config name" [(ngModel)]="name">
+    </div>
+    <div class="save-pods-modal-footer">
+      <button class="cancel-btn" (click)="cancelSavePods()">Cancel</button>
+      <button class="apply-btn" (click)="applySavePods()" [disabled]="!name || name.trim().length === 0">Apply</button>
+    </div>
+  </div>
+</div>

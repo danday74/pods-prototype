@@ -1,4 +1,5 @@
 export interface IPod {
+    id: string
     text: string
     number: number
     buttonText: 'Go' | 'View'

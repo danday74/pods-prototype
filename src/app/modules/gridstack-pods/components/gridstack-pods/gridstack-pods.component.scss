@@ -1,0 +1,12 @@
+@import 'src/styles/vars';
+
+.app-gridstack-wrapper {
+  height: calc(100vh - ($headerHeight * 1px) - ($subheaderHeight * 1px) - ($footerHeight * 1px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-gridstack {
+  width: 990px;
+}

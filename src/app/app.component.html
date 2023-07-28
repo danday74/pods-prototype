@@ -8,3 +8,7 @@
   <router-outlet></router-outlet>
 </div>
 <div class="footer">&nbsp;</div>
+
+<ng-container *ngIf="showSavePodsModal">
+  <app-save-pods-modal [type]="savePodsType" (cancel)="cancelSavePods()" (apply)="applySavePods($event)"></app-save-pods-modal>
+</ng-container>

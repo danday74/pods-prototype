@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { NgOptimizedImage } from '@angular/common'
+import { SavePodsModalModule } from './modules/save-pods-modal/save-pods-modal.module'
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { NgOptimizedImage } from '@angular/common'
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    SavePodsModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
