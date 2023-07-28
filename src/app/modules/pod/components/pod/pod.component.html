@@ -1,0 +1,10 @@
+<div class="pod" [ngClass]="(pod.dark ? 'dark' : 'light') + ' ' + cssClass">
+    <div>
+        <div class="pod-text">{{ pod.text }}</div>
+        <ng-container *ngIf="pod.number != null">
+            <div class="pod-number">{{ pod.number }}</div>
+        </ng-container>
+    </div>
+    <button class="pod-delete" (click)="delete($event)">&#x2715;</button>
+    <button class="pod-button">{{ pod.buttonText }}</button>
+</div>

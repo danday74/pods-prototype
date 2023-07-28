@@ -1,0 +1,14 @@
+.grid-stack-item-content {
+  // width: 300px;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 26%);
+  border-radius: 7px;
+}
+
+.grid-stack-item > .ui-resizable-se {
+  right: 20px !important;
+  bottom: 15px !important;
+}
+
+.grid-stack-item[gs-id $= "dark"] > .ui-resizable-se {
+  filter: brightness(0) saturate(100%) invert(100%);
+}

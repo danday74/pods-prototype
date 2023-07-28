@@ -1,3 +1,4 @@
+@import 'src/styles/gridstack';
 @import 'src/styles/thin-scrollbar';
 
 body {
@@ -6,6 +7,7 @@ body {
   // font-family: "Lucida Console", sans-serif;
   font-family: sans-serif;
   color: #333;
+  user-select: none;
 }
 
 button {

@@ -1,15 +1,7 @@
 <div class="grid-wrapper">
   <div class="grid">
     <ng-container *ngFor="let pod of pods">
-      <div class="pod" [ngClass]="pod.dark ? 'dark' : 'light'">
-        <div>
-          <div class="pod-text">{{ pod.text }}</div>
-          <ng-container *ngIf="pod.number != null">
-            <div class="pod-number">{{ pod.number }}</div>
-          </ng-container>
-        </div>
-        <button>{{ pod.buttonText }}</button>
-      </div>
+      <app-pod [pod]="pod" cssClass="css-grid"></app-pod>
     </ng-container>
   </div>
 </div>

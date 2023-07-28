@@ -15,6 +15,7 @@ $footerBgColor: #EEE;
   background-color: $headerBgColor;
   display: flex;
   align-items: center;
+  z-index: 1;
 
   img.reed-logo {
     margin: 0 20px;
@@ -39,10 +40,12 @@ $footerBgColor: #EEE;
   top: $headerHeight * 1px;
   height: $subheaderHeight * 1px;
   background-color: $subheaderBgColor;
+  z-index: 1;
 }
 
 .main {
   margin-top: $headerHeight + $subheaderHeight * 1px;
+  margin-bottom: $footerHeight * 1px;
 }
 
 .footer {
@@ -50,4 +53,5 @@ $footerBgColor: #EEE;
   height: $footerHeight * 1px;
   background-color: $footerBgColor;
   border-top: 1px solid #DDD;
+  z-index: 1;
 }

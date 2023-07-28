@@ -1,11 +1,12 @@
 import { Component } from '@angular/core'
-import { pods } from './pods'
+import { pods } from '../../../../data/pods'
+import { IPod } from '../../../../interfaces/i-pod'
 
 @Component({
-  selector: 'app-pods',
-  templateUrl: './pods.component.html',
-  styleUrls: ['./pods.component.scss']
+    selector: 'app-pods',
+    templateUrl: './pods.component.html',
+    styleUrls: ['./pods.component.scss']
 })
 export class PodsComponent {
-  pods = pods
+    pods: IPod[] = pods.filter((pod: IPod) => pod.active)
 }

@@ -30,6 +30,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/gridstack/dist/gridstack.min.css",
+              "node_modules/gridstack/dist/gridstack-extra.min.css",
               "src/styles.scss"
             ],
             "scripts": []

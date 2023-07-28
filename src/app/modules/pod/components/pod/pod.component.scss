@@ -1,0 +1,123 @@
+@import 'src/styles/colors';
+
+.pod {
+  // aspect-ratio: 1.618 / 1; // golden ratio
+  height: 100%;
+  position: relative;
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.css-grid {
+    width: 300px;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 26%);
+    border-radius: 7px;
+    cursor: pointer;
+
+    button.pod-delete {
+      display: none !important;
+    }
+  }
+
+  &.gridstack {
+    cursor: grab;
+
+    button.pod-button {
+      left: 15px;
+    }
+  }
+
+  &:not(.gridstack) {
+    button.pod-button {
+      right: 15px;
+    }
+  }
+
+  button.pod-delete {
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+
+    &:hover {
+      font-weight: bold;
+    }
+
+    display: none;
+  }
+
+  &:hover {
+    button.pod-delete {
+      display: block;
+    }
+  }
+
+  .pod-text {
+    font-size: 25px;
+    user-select: text;
+  }
+
+  .pod-number {
+    font-size: 35px;
+    margin-top: 20px;
+    user-select: text;
+  }
+
+  button.pod-button {
+    position: absolute;
+    bottom: 12px;
+    font-size: 14px;
+    border-radius: 3px;
+    min-width: 60px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 26%);
+    border: none;
+    padding: 2px 5px;
+  }
+
+  &.light {
+    background-color: $podLightColor;
+
+    button.pod-delete {
+      color: #000;
+    }
+
+    .pod-text {
+      color: #333;
+    }
+
+    .pod-number {
+      color: $podDarkColor;
+    }
+
+    button.pod-button {
+      background-color: $podDarkColor;
+      color: #FFF;
+    }
+  }
+
+  &.dark {
+    background-color: $podDarkColor;
+
+    button.pod-delete {
+      color: #FFF;
+    }
+
+    .pod-text {
+      color: #FFF;
+    }
+
+    .pod-number {
+      color: #FFF;
+    }
+
+    button.pod-button {
+      background-color: #FFF;
+      color: $podDarkColor;
+    }
+  }
+}
