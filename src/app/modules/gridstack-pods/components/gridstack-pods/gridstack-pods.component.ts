@@ -22,6 +22,7 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     // acceptWidgets: true,
     cellHeight: 198,
     column: 3,
+    disableOneColumnMode: true,
     float: true,
     margin: '10 15',
     row: 3,
