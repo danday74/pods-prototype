@@ -8,5 +8,5 @@ import { IPod } from '../../../../interfaces/i-pod'
     styleUrls: ['./pods.component.scss']
 })
 export class PodsComponent {
-    pods: IPod[] = pods.filter((pod: IPod) => pod.active)
+    pods: IPod[] = pods.slice(0, 9)
 }

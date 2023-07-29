@@ -1,77 +1,79 @@
 import { IPod } from '../interfaces/i-pod'
+import { kebabCase } from 'lodash-es'
 import { getRandomNumber } from '../utils/number-utils'
 
-export const pods: IPod[] = [
+const podz: IPod[] = [
   {
-    id: 'new-jobs',
+    id: null,
     text: 'New Jobs',
-    number: getRandomNumber(100),
+    number: 0,
     buttonText: 'Go',
-    dark: true,
-    active: true
+    dark: true
   },
   {
-    id: 'my-unfilled-jobs',
+    id: null,
     text: 'My Unfilled Jobs',
-    number: getRandomNumber(100),
+    number: 0,
     buttonText: 'View',
-    dark: false,
-    active: true
+    dark: false
   },
   {
-    id: 'in-progress-bookings',
+    id: null,
     text: 'In Progress Bookings',
-    number: getRandomNumber(100),
+    number: 0,
     buttonText: 'View',
-    dark: false,
-    active: true
+    dark: false
   },
   {
-    id: 'messages',
+    id: null,
     text: 'Messages',
-    number: getRandomNumber(100),
+    number: 0,
     buttonText: 'Go',
-    dark: false,
-    active: true
+    dark: false
   },
   {
-    id: 'unsubmitted-timesheets',
+    id: null,
     text: 'Unsubmitted Timesheets',
-    number: getRandomNumber(100),
+    number: 0,
     buttonText: 'View',
-    dark: false,
-    active: true
+    dark: false
   },
   {
-    id: 'unauthorised-timesheets',
+    id: null,
     text: 'Unauthorised Timesheets',
-    number: getRandomNumber(100),
+    number: 0,
     buttonText: 'View',
-    dark: false,
-    active: true
+    dark: false
   },
   {
-    id: 'rejected-timesheets',
+    id: null,
     text: 'Rejected Timesheets',
-    number: getRandomNumber(100),
+    number: 0,
     buttonText: 'View',
-    dark: false,
-    active: true
+    dark: false
   },
   {
-    id: 'timesheet-guide',
+    id: null,
     text: 'Timesheet Guide',
     number: null,
     buttonText: 'Go',
-    dark: true,
-    active: true
+    dark: true
   },
   {
-    id: 'xms-user-guide',
+    id: null,
     text: 'XMS User Guide',
     number: null,
     buttonText: 'Go',
-    dark: true,
-    active: true
+    dark: true
   }
 ]
+
+export const pods: IPod[] = podz.map((pod: IPod) => {
+  pod.id = kebabCase(pod.text)
+  if (pod.number === 0) {
+    const strNumber: string = localStorage.getItem(`pod-num-${pod.id}`)
+    pod.number = strNumber ? +strNumber : getRandomNumber(100)
+    localStorage.setItem(`pod-num-${pod.id}`, pod.number.toString())
+  }
+  return pod
+})

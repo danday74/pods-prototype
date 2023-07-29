@@ -4,5 +4,4 @@ export interface IPod {
     number: number
     buttonText: 'Go' | 'View'
     dark: boolean
-    active: boolean
 }
