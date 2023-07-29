@@ -1,8 +1,5 @@
+@import 'src/styles/colors';
 @import 'src/styles/vars';
-
-$headerBgColor: #333C4E;
-$subheaderBgColor: #0E85D4;
-$footerBgColor: #EEE;
 
 .header, .subheader, .footer {
   position: fixed;
@@ -12,7 +9,7 @@ $footerBgColor: #EEE;
 .header {
   top: 0;
   height: $headerHeight * 1px;
-  background-color: $headerBgColor;
+  background-color: $headerBlue;
   display: flex;
   align-items: center;
   z-index: 1;
@@ -25,7 +22,7 @@ $footerBgColor: #EEE;
   a {
     color: #FFF;
     padding: 10px 20px;
-    background-color: lighten($headerBgColor, 10%);
+    background-color: lighten($headerBlue, 10%);
     border-radius: 5px;
     margin: 0 10px;
     text-decoration: none;
@@ -39,19 +36,28 @@ $footerBgColor: #EEE;
 .subheader {
   top: $headerHeight * 1px;
   height: $subheaderHeight * 1px;
-  background-color: $subheaderBgColor;
+  background-color: $subheaderBlue;
   z-index: 1;
 }
 
 .main {
   margin-top: $headerHeight + $subheaderHeight * 1px;
   margin-bottom: $footerHeight * 1px;
+  transition: margin-left 800ms;
+
+  &.drawer-open {
+    margin-left: 220px;
+  }
+
+  &.drawer-close {
+    margin-left: 20px;
+  }
 }
 
 .footer {
   bottom: 0;
   height: $footerHeight * 1px;
-  background-color: $footerBgColor;
+  background-color: #EEE;
   border-top: 1px solid #DDD;
   z-index: 1;
 }
