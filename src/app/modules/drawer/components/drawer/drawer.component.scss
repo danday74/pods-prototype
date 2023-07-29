@@ -1,0 +1,58 @@
+@use 'sass:math';
+@import 'src/styles/colors';
+@import 'src/styles/vars';
+
+$drawerWidth: 220;
+$btnToggleSize: 30;
+$animationSpeed: 800ms;
+
+.drawer {
+  position: fixed;
+  height: calc(100vh - ($headerHeight * 1px) - ($subheaderHeight * 1px) - ($footerHeight * 1px));
+  width: $drawerWidth * 1px;
+  background-color: #DDD;
+  border-right: 1px solid #CCC;
+  transition: left $animationSpeed;
+
+  &.open {
+    left: 0;
+
+    .btn-toggle > span {
+      transform: rotate(180deg);
+    }
+  }
+
+  &.close {
+    left: -200px;
+
+    .btn-toggle > span {
+      transform: rotate(0);
+    }
+  }
+
+  .btn-toggle {
+    border: 1px solid #CCC;
+    background-color: $headerBlue;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 90px;
+    width: $btnToggleSize * 1px;
+    height: $btnToggleSize * 1px;
+    position: absolute;
+    left: ($drawerWidth - math.div($btnToggleSize, 2) - 1) * 1px;
+    top: 20px;
+
+    & > span {
+      font-size: 30px;
+      transition: transform $animationSpeed;
+    }
+  }
+
+  .contents {
+    width: $drawerWidth - 20 * 1px;
+    height: 100%;
+    padding: 20px;
+  }
+}
