@@ -65,6 +65,70 @@ const podz: IPod[] = [
     number: null,
     buttonText: 'Go',
     dark: true
+  },
+  // MORE
+  {
+    id: null,
+    text: 'Active Extensions',
+    number: 0,
+    buttonText: 'View',
+    dark: true
+  },
+  {
+    id: null,
+    text: 'Audit Packs',
+    number: 0,
+    buttonText: 'View',
+    dark: false
+  },
+  {
+    id: null,
+    text: 'Available and Eligible Candidates',
+    number: 0,
+    buttonText: 'View',
+    dark: true
+  },
+  {
+    id: null,
+    text: 'Interview Requests',
+    number: 0,
+    buttonText: 'View',
+    dark: true
+  },
+  {
+    id: null,
+    text: 'My Interviews Within the Next 7 Days',
+    number: 0,
+    buttonText: 'View',
+    dark: true
+  },
+  {
+    id: null,
+    text: 'New Orders',
+    number: 0,
+    buttonText: 'View',
+    dark: false
+  },
+  {
+    id: null,
+    text: 'Non Chargeable Timesheets',
+    number: 0,
+    buttonText: 'View',
+    dark: false
+  },
+  {
+    id: null,
+    text: 'Other Tasks',
+    number: 0,
+    buttonText: 'View',
+    dark: true
+  },
+  {
+    id: null,
+    text: 'Submissions',
+    number: 0,
+    buttonText: 'View',
+    dark: false
   }
 ]
 
