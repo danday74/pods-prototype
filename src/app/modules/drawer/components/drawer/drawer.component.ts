@@ -34,12 +34,12 @@ export class DrawerComponent extends DestroyerComponent implements OnInit {
 
   toggle() {
     this.open = !this.open
-    this.messageService.message({name: 'drawer', payload: {open: this.open}})
+    this.messageService.message('drawer', {open: this.open})
     this.storageService.setItem('drawer-open', this.open)
   }
 
   activatePod(pod: IPod) {
-    console.log(pod)
+    this.messageService.message('add-pod', pod)
     this.inactivePod = {id: null, text: 'Add Pod', number: null, buttonText: null, dark: null}
   }
 }

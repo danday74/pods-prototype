@@ -4,10 +4,11 @@ import { IMessage } from '../interfaces/i-message'
 
 @Injectable({providedIn: 'root'})
 export class MessageService {
-    private messageSource = new Subject<IMessage>()
-    message$ = this.messageSource.asObservable()
+  private messageSource = new Subject<IMessage>()
+  message$ = this.messageSource.asObservable()
 
-    message(msg: IMessage) {
-        this.messageSource.next(msg)
-    }
+  message(name: string, payload: any = null) {
+    const msg: IMessage = {name, payload}
+    this.messageSource.next(msg)
+  }
 }

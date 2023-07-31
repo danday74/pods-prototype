@@ -40,9 +40,12 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
 
     this.messageService.message$.pipe(
       takeUntil(this.unsubscribe$),
-      filter((message: IMessage) => message.name === 'delete-pod' || (message.name === 'save-pods-apply' && message.payload.type === 'gridstack'))
+      filter((message: IMessage) => message.name === 'add-pod' || message.name === 'delete-pod' || (message.name === 'save-pods-apply' && message.payload.type === 'gridstack'))
     ).subscribe((message: IMessage) => {
       switch (message.name) {
+        case 'add-pod':
+          this.addPod(message.payload)
+          break
         case 'delete-pod':
           this.deletePod(message.payload)
           break
@@ -58,6 +61,15 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     setTimeout(() => {
       this.updateInactivePods()
     })
+  }
+
+  private addPod(pod: IPod) {
+    if (pod) {
+      const podPosition: IPodPosition = {id: pod.id, x: null, y: null, w: 1, h: 1}
+      const widget: NgGridStackWidget = this.getWidget(pod, podPosition)
+      this.grid.addWidget(widget)
+      this.saveCurrentPods()
+    }
   }
 
   private deletePod(pod: GridStackElement) {
@@ -82,7 +94,7 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     const inactivePods: IPod[] = pods.filter((pod: IPod) => !activePodIds.includes(pod.id))
     const podz: IPod[] = sortBy(inactivePods, ['id'])
     const willItFit: boolean = this.willItFit()
-    this.messageService.message({name: 'inactive-pods', payload: {pods: podz, willItFit}})
+    this.messageService.message('inactive-pods', {pods: podz, willItFit})
   }
 
   private willItFit(): boolean {
@@ -127,18 +139,22 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     }
 
     return podPositions.map((podPosition: IPodPosition) => {
-      const {id, x, y, w, h} = podPosition
-      const pod: IPod = find(pods, {id})
-      const widget: NgGridStackWidget = {
-        x,
-        y,
-        w,
-        h,
-        selector: 'app-pod',
-        input: {pod, cssClass: 'gridstack'},
-        id: `${pod.id}-${pod.dark ? 'dark' : 'light'}`
-      }
-      return widget
+      const pod: IPod = find(pods, {id: podPosition.id})
+      return this.getWidget(pod, podPosition)
     })
+  }
+
+  private getWidget(pod: IPod, podPosition: IPodPosition): NgGridStackWidget {
+    const {x, y, w, h} = podPosition
+    const widget: NgGridStackWidget = {
+      x,
+      y,
+      w,
+      h,
+      selector: 'app-pod',
+      input: {pod, cssClass: 'gridstack'},
+      id: `${pod.id}-${pod.dark ? 'dark' : 'light'}`
+    }
+    return widget
   }
 }

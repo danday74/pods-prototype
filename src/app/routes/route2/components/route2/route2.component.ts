@@ -11,6 +11,6 @@ export class Route2Component {
   constructor(private messageService: MessageService) {}
 
   save() {
-    this.messageService.message({name: 'save-pods', payload: {type: 'gridstack'}})
+    this.messageService.message('save-pods', {type: 'gridstack'})
   }
 }

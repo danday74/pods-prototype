@@ -55,7 +55,7 @@ export class AppComponent extends DestroyerComponent implements OnInit {
 
   applySavePods(name: string) {
     this.showSavePodsModal = false
-    this.messageService.message({name: 'save-pods-apply', payload: {name, type: this.savePodsType}})
+    this.messageService.message('save-pods-apply', {name, type: this.savePodsType})
   }
 
   private savePods(type: string) {
