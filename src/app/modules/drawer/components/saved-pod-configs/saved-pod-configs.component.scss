@@ -1,0 +1,93 @@
+@import 'src/styles/colors';
+@import 'src/styles/vars';
+
+.saved-pod-configs {
+  .title {
+    color: #FFF;
+    background-color: $headerBlue;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    padding: 10px 15px;
+    margin-bottom: 2px;
+  }
+
+  .no-saved-pod-configs {
+    background-color: #FFF;
+    padding: 10px 15px 12px;
+    font-size: 15px;
+    border-radius: 0 0 5px 5px;
+
+    & > span {
+      display: inline-block;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        font-style: italic;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .grid-wrapper {
+    overflow-y: auto;
+    height: calc(100vh - ($headerHeight * 1px) - ($subheaderHeight * 1px) - ($footerHeight * 1px) - 168px);
+    font-size: 15px;
+    // background-color: #FFF;
+
+    .grid {
+      display: grid;
+      grid-template-columns: 43px auto;
+      gap: 2px;
+
+      button {
+        border: none;
+      }
+
+      .btn-delete {
+        color: #222;
+
+        .delete-icon {
+          position: relative;
+          top: 3px;
+        }
+
+        &:hover {
+          background-color: #222 !important;
+          color: #FFF;
+        }
+
+        &:nth-child(4n + 1) {
+          background-color: #FFF;
+        }
+
+        &:nth-child(4n + 3) {
+          background-color: lighten($victoriaBlue, 30%);
+        }
+      }
+
+      .btn-activate {
+        color: #333;
+        text-align: left;
+        text-overflow: ellipsis;
+        padding: 10px 15px;
+
+        &:hover {
+          background-color: $victoriaBlue !important;
+          color: #FFF;
+        }
+
+        &:nth-child(4n + 2) {
+          background-color: #FFF;
+        }
+
+        &:nth-child(4n + 4) {
+          background-color: lighten($victoriaBlue, 30%);
+        }
+      }
+    }
+  }
+}

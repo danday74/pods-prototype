@@ -1,15 +1,25 @@
 <div class="saved-pod-configs">
   <div class="title">Saved Pod Configs</div>
-  <div class="grid-wrapper thin-scrollbar">
-    <div class="grid">
-      <ng-container *ngFor="let savedPodConfig of savedPodConfigs">
-        <button mat-ripple class="btn-delete" (click)="deleteSavedPodConfig(savedPodConfig)">
-          <span class="material-icons delete-icon">delete</span>
-        </button>
-        <button mat-ripple class="btn-activate" (click)="activateSavedPodConfig(savedPodConfig)" [title]="savedPodConfig.name">
-          <span>{{ savedPodConfig.name }}</span>
-        </button>
-      </ng-container>
+
+  <ng-container *ngIf="!savedPodConfigs.length">
+    <div class="no-saved-pod-configs">
+      <span>No pod configurations have been saved</span>
+      <span><strong>Drag, drop and resize</strong> pods or <strong>add and remove</strong> pods and then hit save</span>
     </div>
-  </div>
+  </ng-container>
+
+  <ng-container *ngIf="savedPodConfigs.length">
+    <div class="grid-wrapper thin-scrollbar">
+      <div class="grid">
+        <ng-container *ngFor="let savedPodConfig of savedPodConfigs">
+          <button mat-ripple class="btn-delete" (click)="deleteSavedPodConfig(savedPodConfig)">
+            <span class="material-icons delete-icon">delete</span>
+          </button>
+          <button mat-ripple class="btn-activate" (click)="activateSavedPodConfig(savedPodConfig)" [title]="savedPodConfig.name">
+            <span>{{ savedPodConfig.name }}</span>
+          </button>
+        </ng-container>
+      </div>
+    </div>
+  </ng-container>
 </div>
