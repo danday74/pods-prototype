@@ -11,6 +11,7 @@ import { IMessage } from '../../../../interfaces/i-message'
 import { IPodPosition } from '../../../../interfaces/i-pod-position'
 import { StorageService } from '../../../../services/storage.service'
 import { find, sortBy } from 'lodash-es'
+import { ISavedPodConfig } from '../../../../interfaces/i-saved-pod-config'
 
 @Component({
   selector: 'app-gridstack-pods',
@@ -50,7 +51,7 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
           this.deletePod(message.payload)
           break
         case 'save-pods-apply':
-          this.savePods(message.payload.name)
+          this.savePodConfig(message.payload.name)
           break
       }
     })
@@ -68,23 +69,28 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
       const podPosition: IPodPosition = {id: pod.id, x: null, y: null, w: 1, h: 1}
       const widget: NgGridStackWidget = this.getWidget(pod, podPosition)
       this.grid.addWidget(widget)
-      this.saveCurrentPods()
+      this.saveCurrentPodConfig()
     }
   }
 
   private deletePod(pod: GridStackElement) {
     this.grid.removeWidget(pod)
-    this.saveCurrentPods()
+    this.saveCurrentPodConfig()
   }
 
-  private savePods(savePodsConfigName: string) {
+  private savePodConfig(name: string) {
     const podPositions: IPodPosition[] = this.getPodPositions()
-    this.storageService.setItem(`pods-config-gridstack-${savePodsConfigName}`, podPositions)
+    let savedPodConfigs: ISavedPodConfig[] = this.storageService.getItem('saved-pod-configs-gridstack', [])
+    savedPodConfigs = savedPodConfigs.filter((savedPodConfig: ISavedPodConfig) => savedPodConfig.name !== name)
+    savedPodConfigs.push({name, podPositions})
+    savedPodConfigs = sortBy(savedPodConfigs, ['name'])
+    this.storageService.setItem(`saved-pod-configs-gridstack`, savedPodConfigs)
+    this.messageService.message(`saved-pod-configs-gridstack`, savedPodConfigs)
   }
 
-  private saveCurrentPods() {
+  private saveCurrentPodConfig() {
     const podPositions: IPodPosition[] = this.getPodPositions()
-    this.storageService.setItem(`pods-config-gridstack-xxx-current-xxx`, podPositions)
+    this.storageService.setItem(`current-pod-config-gridstack`, podPositions)
     this.updateInactivePods()
   }
 
@@ -116,13 +122,13 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
   private initGridStack() {
     this.grid = GridStack.init()
     this.grid.on('change', (/* evt: Event, nodes: GridStackNode[] */) => {
-      this.saveCurrentPods()
+      this.saveCurrentPodConfig()
     })
   }
 
   private initPods(): NgGridStackWidget[] {
 
-    let podPositions: IPodPosition[] = this.storageService.getItem(`pods-config-gridstack-xxx-current-xxx`)
+    let podPositions: IPodPosition[] = this.storageService.getItem(`current-pod-config-gridstack`)
 
     if (!podPositions) {
       const podz: IPod[] = pods.slice(0, 9)

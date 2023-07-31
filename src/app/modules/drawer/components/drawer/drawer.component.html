@@ -7,5 +7,8 @@
                 scrollHeight="300px"
                 [options]="inactivePods" [filter]="true" [disabled]="!willItFit" [resetFilterOnHide]="true"
                 [ngModel]="inactivePod" (ngModelChange)="activatePod($event)"></p-dropdown>
+
+    <hr>
+    <app-saved-pod-configs></app-saved-pod-configs>
   </div>
 </div>

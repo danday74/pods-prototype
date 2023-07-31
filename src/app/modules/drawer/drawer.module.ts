@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common'
 import { DrawerComponent } from './components/drawer/drawer.component'
 import { DropdownModule } from 'primeng/dropdown'
 import { FormsModule } from '@angular/forms'
+import { SavedPodConfigsComponent } from './components/saved-pod-configs/saved-pod-configs.component'
+import { MatRippleModule } from '@angular/material/core'
 
 @NgModule({
   declarations: [
-    DrawerComponent
+    DrawerComponent,
+    SavedPodConfigsComponent
   ],
   exports: [
     DrawerComponent
@@ -14,7 +17,8 @@ import { FormsModule } from '@angular/forms'
   imports: [
     CommonModule,
     DropdownModule,
-    FormsModule
+    FormsModule,
+    MatRippleModule
   ]
 })
 export class DrawerModule {}
