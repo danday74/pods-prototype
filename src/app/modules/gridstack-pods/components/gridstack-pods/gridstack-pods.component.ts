@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core'
-import { GridItemHTMLElement, GridStack, GridStackElement, GridStackNode } from 'gridstack'
+import { GridItemHTMLElement, GridStack, GridStackElement, GridStackNode, GridStackWidget } from 'gridstack'
 import { IPod } from '../../../../interfaces/i-pod'
 import { pods } from 'src/app/data/pods'
 import { GridstackComponent, NgGridStackOptions, NgGridStackWidget } from 'gridstack/dist/angular'
@@ -39,8 +39,8 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     GridstackComponent.addComponentToSelectorType([PodComponent])
 
     this.messageService.message$.pipe(
-        takeUntil(this.unsubscribe$),
-        filter((message: IMessage) => message.name === 'delete-pod' || (message.name === 'save-pods-apply' && message.payload.type === 'gridstack'))
+      takeUntil(this.unsubscribe$),
+      filter((message: IMessage) => message.name === 'delete-pod' || (message.name === 'save-pods-apply' && message.payload.type === 'gridstack'))
     ).subscribe((message: IMessage) => {
       switch (message.name) {
         case 'delete-pod':
@@ -55,6 +55,9 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
 
   ngAfterViewInit() {
     this.initGridStack()
+    setTimeout(() => {
+      this.updateInactivePods()
+    })
   }
 
   private deletePod(pod: GridStackElement) {
@@ -70,6 +73,21 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
   private saveCurrentPods() {
     const podPositions: IPodPosition[] = this.getPodPositions()
     this.storageService.setItem(`pods-config-gridstack-xxx-current-xxx`, podPositions)
+    this.updateInactivePods()
+  }
+
+  private updateInactivePods() {
+    const podPositions: IPodPosition[] = this.getPodPositions()
+    const activePodIds: string[] = podPositions.map((podPosition: IPodPosition) => podPosition.id)
+    const inactivePods: IPod[] = pods.filter((pod: IPod) => !activePodIds.includes(pod.id))
+    const podz: IPod[] = sortBy(inactivePods, ['id'])
+    const willItFit: boolean = this.willItFit()
+    this.messageService.message({name: 'inactive-pods', payload: {pods: podz, willItFit}})
+  }
+
+  private willItFit(): boolean {
+    const pod: GridStackWidget = {w: 1, h: 1}
+    return this.grid.willItFit(pod)
   }
 
   private getPodPositions(): IPodPosition[] {

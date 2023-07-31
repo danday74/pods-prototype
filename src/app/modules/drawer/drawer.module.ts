@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { DrawerComponent } from './components/drawer/drawer.component'
+import { DropdownModule } from 'primeng/dropdown'
+import { FormsModule } from '@angular/forms'
 
 @NgModule({
   declarations: [
@@ -10,7 +12,9 @@ import { DrawerComponent } from './components/drawer/drawer.component'
     DrawerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    DropdownModule,
+    FormsModule
   ]
 })
 export class DrawerModule {}

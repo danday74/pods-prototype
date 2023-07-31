@@ -1,0 +1,29 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.add-pod-dropdown {
+  width: 169px;
+
+  .add-pod-dropdown-panel {
+    width: 167px;
+
+    .p-dropdown-items-wrapper {
+      @include thinScrollbar;
+
+      .p-dropdown-item {
+        white-space: normal;
+
+        &:hover {
+          background-color: $victoriaBlue !important;
+          color: #FFF !important;
+        }
+      }
+
+      p-dropdownitem:nth-child(even) {
+        .p-dropdown-item {
+          background-color: lighten($victoriaBlue, 30%);
+        }
+      }
+    }
+  }
+}
