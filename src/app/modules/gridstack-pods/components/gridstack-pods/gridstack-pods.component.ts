@@ -83,7 +83,7 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     let savedPodConfigs: ISavedPodConfig[] = this.storageService.getItem('saved-pod-configs-gridstack', [])
     savedPodConfigs = savedPodConfigs.filter((savedPodConfig: ISavedPodConfig) => savedPodConfig.name !== name)
     savedPodConfigs.push({name, podPositions})
-    savedPodConfigs = sortBy(savedPodConfigs, ['name'])
+    savedPodConfigs = sortBy(savedPodConfigs, [(savedPodConfig: ISavedPodConfig) => savedPodConfig.name.toLowerCase()])
     this.storageService.setItem(`saved-pod-configs-gridstack`, savedPodConfigs)
     this.messageService.message(`saved-pod-configs-gridstack`, savedPodConfigs)
   }
