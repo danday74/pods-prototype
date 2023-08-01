@@ -12,7 +12,7 @@
     <div class="grid-wrapper thin-scrollbar">
       <div class="grid">
         <ng-container *ngFor="let savedPodConfig of savedPodConfigs">
-          <button mat-ripple class="btn-delete" (click)="deleteSavedPodConfig(savedPodConfig)">
+          <button class="btn-delete" (click)="deleteSavedPodConfig(savedPodConfig)">
             <span class="material-icons delete-icon">delete</span>
           </button>
           <button mat-ripple class="btn-activate" (click)="activateSavedPodConfig(savedPodConfig)" [title]="savedPodConfig.name">
