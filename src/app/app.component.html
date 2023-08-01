@@ -14,3 +14,7 @@
 <ng-container *ngIf="showSavePodsModal">
   <app-save-pods-modal [type]="savePodsType" (cancel)="cancelSavePods()" (apply)="applySavePods($event)"></app-save-pods-modal>
 </ng-container>
+
+<ng-container *ngIf="showCreatePodModal">
+  <app-create-pod-modal (cancel)="cancelCreatePod()" (create)="applyCreatePod($event)"></app-create-pod-modal>
+</ng-container>

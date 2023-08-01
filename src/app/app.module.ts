@@ -5,6 +5,7 @@ import { AppComponent } from './app.component'
 import { NgOptimizedImage } from '@angular/common'
 import { SavePodsModalModule } from './modules/save-pods-modal/save-pods-modal.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { CreatePodModalModule } from './modules/create-pod-modal/create-pod-modal.module'
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     BrowserAnimationsModule,
     AppRoutingModule,
     NgOptimizedImage,
-    SavePodsModalModule
+    SavePodsModalModule,
+    CreatePodModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
