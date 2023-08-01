@@ -41,9 +41,12 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
 
     this.messageService.message$.pipe(
       takeUntil(this.unsubscribe$),
-      filter((message: IMessage) => message.name === 'add-pod' || message.name === 'delete-pod' || (message.name === 'save-pods-apply' && message.payload.type === 'gridstack'))
+      filter((message: IMessage) => message.name === 'activate-saved-pod-config-gridstack' || message.name === 'add-pod' || message.name === 'delete-pod' || (message.name === 'save-pods-apply' && message.payload.type === 'gridstack'))
     ).subscribe((message: IMessage) => {
       switch (message.name) {
+        case 'activate-saved-pod-config-gridstack':
+          this.activateSavedPodConfig(message.payload)
+          break
         case 'add-pod':
           this.addPod(message.payload)
           break
@@ -62,6 +65,18 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     setTimeout(() => {
       this.updateInactivePods()
     })
+  }
+
+  private activateSavedPodConfig(savedPodConfig: ISavedPodConfig) {
+    this.grid.removeAll()
+    this.grid.batchUpdate(true)
+    savedPodConfig.podPositions.forEach((podPosition: IPodPosition) => {
+      const pod: IPod = find(pods, {id: podPosition.id})
+      const widget: NgGridStackWidget = this.getWidget(pod, podPosition)
+      this.grid.addWidget(widget)
+    })
+    this.grid.batchUpdate(false)
+    this.saveCurrentPodConfig()
   }
 
   private addPod(pod: IPod) {

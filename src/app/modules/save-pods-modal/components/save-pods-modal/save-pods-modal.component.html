@@ -5,7 +5,7 @@
       <span class="text">Save Pods ({{ type }})</span>
     </div>
     <div class="save-pods-modal-body">
-      <input class="form-control" placeholder="pod config name" [(ngModel)]="name">
+      <input class="form-control" placeholder="pod config name" (keyup.enter)="applySavePods()" [(ngModel)]="name">
     </div>
     <div class="save-pods-modal-footer">
       <button class="cancel-btn" (click)="cancelSavePods()">Cancel</button>

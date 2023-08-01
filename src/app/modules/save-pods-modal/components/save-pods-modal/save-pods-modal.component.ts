@@ -17,6 +17,8 @@ export class SavePodsModalComponent {
   }
 
   applySavePods() {
-    this.apply.emit(this.name.trim())
+    if (this.name && this.name.trim().length > 0) {
+      this.apply.emit(this.name.trim())
+    }
   }
 }

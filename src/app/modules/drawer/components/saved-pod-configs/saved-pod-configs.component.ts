@@ -28,10 +28,13 @@ export class SavedPodConfigsComponent extends DestroyerComponent implements OnIn
   }
 
   activateSavedPodConfig(savedPodConfig: ISavedPodConfig) {
-    console.log('activateSavedPodConfig', savedPodConfig)
+    this.messageService.message('activate-saved-pod-config-gridstack', savedPodConfig)
   }
 
   deleteSavedPodConfig(savedPodConfig: ISavedPodConfig) {
-    console.log('deleteSavedPodConfig', savedPodConfig)
+    let savedPodConfigs: ISavedPodConfig[] = this.savedPodConfigs
+    savedPodConfigs = savedPodConfigs.filter((spc: ISavedPodConfig) => spc.name !== savedPodConfig.name)
+    this.storageService.setItem('saved-pod-configs-gridstack', savedPodConfigs)
+    this.messageService.message('saved-pod-configs-gridstack', savedPodConfigs)
   }
 }
