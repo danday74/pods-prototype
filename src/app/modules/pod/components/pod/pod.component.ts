@@ -23,6 +23,6 @@ export class PodComponent extends BaseWidget {
   delete(evt: MouseEvent) {
     const btn: HTMLButtonElement = evt.target as HTMLButtonElement
     const widget: GridStackWidget = btn.closest('.grid-stack-item')
-    this.messageService.message('delete-pod', widget)
+    if (widget) this.messageService.message('delete-pod', widget)
   }
 }

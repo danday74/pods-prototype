@@ -2,9 +2,11 @@
   <div class="title">Saved Pod Configs</div>
 
   <ng-container *ngIf="!savedPodConfigs.length">
-    <div class="no-saved-pod-configs">
-      <span>No pod configurations have been saved</span>
-      <span><strong>Drag, drop and resize</strong> pods or <strong>add and remove</strong> pods and then hit save</span>
+    <div class="no-saved-pod-configs-wrapper">
+      <div class="no-saved-pod-configs">
+        <span>No pod configurations have been saved</span>
+        <span><strong>Drag, drop and resize</strong> pods or <strong>add and remove</strong> pods and then hit save</span>
+      </div>
     </div>
   </ng-container>
 
