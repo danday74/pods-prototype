@@ -5,6 +5,8 @@ import { IMessage } from './interfaces/i-message'
 import { MessageService } from './services/message.service'
 import { StorageService } from './services/storage.service'
 import { NavigationEnd, Router } from '@angular/router'
+import { appConfig } from './app.config'
+import { IAppConfig } from './interfaces/i-app-config'
 
 @Component({
   selector: 'app-root',
@@ -12,7 +14,7 @@ import { NavigationEnd, Router } from '@angular/router'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent extends DestroyerComponent implements OnInit {
-
+  appConfig: IAppConfig = appConfig
   showSavePodsModal = false
   savePodsType: string
   drawerOpen = this.storageService.getItem('drawer-open', false)

@@ -1,7 +1,9 @@
 <div class="header">
-  <img routerLink="route1" class="reed-logo" ngSrc="assets/images/reed.png" height="50" width="96" [priority]="true">
-  <a routerLink="route1" routerLinkActive="active">css grid</a>
-  <a routerLink="route2" routerLinkActive="active">gridstack</a>
+  <ng-container *ngIf="!appConfig.emptyHeader">
+    <img routerLink="route1" class="reed-logo" ngSrc="assets/images/reed.png" height="50" width="96" [priority]="true">
+    <a routerLink="route1" routerLinkActive="active">gridstack</a>
+    <a routerLink="route2" routerLinkActive="active">css grid</a>
+  </ng-container>
 </div>
 <div class="subheader">&nbsp;</div>
 <div class="main" [ngClass]="drawerOpen ? 'drawer-open' : 'drawer-close'">
