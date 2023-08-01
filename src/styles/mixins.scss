@@ -1,3 +1,5 @@
+@import 'src/styles/colors';
+
 $scrollBgColor: #F1F1F1;
 $scrollColor: #A1A1A1;
 
@@ -18,4 +20,78 @@ $scrollColor: #A1A1A1;
 
   scrollbar-width: thin; // 9px in firefox
   scrollbar-color: $scrollColor $scrollBgColor;
+}
+
+@mixin modalOverlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin modalHeader($modalBorderRadius) {
+  background-color: #222;
+  color: #FFF;
+  padding: 15px 20px;
+  border-radius: $modalBorderRadius * 1px $modalBorderRadius * 1px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .icon {
+    position: relative;
+    top: -2px;
+  }
+
+  .text {
+    margin-left: 6px;
+  }
+}
+
+@mixin modalFooter($modalBorderRadius) {
+  text-align: right;
+  background-color: #EEE;
+  border-top: 1px solid #DDD;
+  padding: 15px 20px;
+  border-radius: 0 0 $modalBorderRadius * 1px $modalBorderRadius * 1px;
+
+  button {
+    border-radius: 5px;
+    margin-left: 12px;
+    min-width: 85px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 26%);
+    font-size: 15px;
+    padding: 7px 15px;
+
+    &.apply-btn {
+      background-color: $podDarkColor;
+      color: #FFF;
+
+      &:hover:not(:disabled) {
+        background-color: $victoriaBlue;
+        border: 2px outset darken($victoriaBlue, 5%);
+      }
+    }
+
+    &.cancel-btn {
+      background-color: #F0F0F0;
+      color: #000;
+      border: 2px outset #CCC;
+
+      &:hover {
+        background-color: #DDD;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
 }
