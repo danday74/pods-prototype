@@ -40,6 +40,10 @@ export class DrawerComponent extends DestroyerComponent implements OnInit {
 
   activatePod(pod: IPod) {
     this.messageService.message('add-pod', pod)
-    this.inactivePod = {id: null, text: 'Add Pod', number: null, buttonText: null, dark: null}
+    this.inactivePod = {id: null, text: 'Add Pod', number: null, buttonText: null, dark: null, addedByHuman: null}
+  }
+
+  createPod() {
+    this.messageService.message('create-pod')
   }
 }
