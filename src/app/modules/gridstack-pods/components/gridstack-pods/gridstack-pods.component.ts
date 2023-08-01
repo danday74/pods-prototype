@@ -40,8 +40,8 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     GridstackComponent.addComponentToSelectorType([PodComponent])
 
     this.messageService.message$.pipe(
-      takeUntil(this.unsubscribe$),
-      filter((message: IMessage) => message.name === 'activate-saved-pod-config-gridstack' || message.name === 'add-pod' || message.name === 'delete-pod' || message.name === 'extra-pods' || (message.name === 'save-pods-apply' && message.payload.type === 'gridstack'))
+        takeUntil(this.unsubscribe$),
+        filter((message: IMessage) => message.name === 'activate-saved-pod-config-gridstack' || message.name === 'add-pod' || message.name === 'delete-pod' || message.name === 'extra-pods' || (message.name === 'save-pods-apply' && message.payload.type === 'gridstack'))
     ).subscribe((message: IMessage) => {
       switch (message.name) {
         case 'activate-saved-pod-config-gridstack':
@@ -153,15 +153,18 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     if (!podPositions) {
       const pods: IPod[] = getPods().filter((pod: IPod) => !pod.addedByHuman).slice(0, 9)
       podPositions = pods.map((pod: IPod, i: number) => {
-        const podPosition: IPodPosition = {
-          x: i % 3,
-          y: Math.floor(i / 3),
-          w: 1,
-          h: 1,
-          id: pod.id
+        if (i % 2 === 0) {
+          const podPosition: IPodPosition = {
+            x: i % 3,
+            y: Math.floor(i / 3),
+            w: 1,
+            h: 1,
+            id: pod.id
+          }
+          return podPosition
         }
-        return podPosition
-      })
+        return null
+      }).filter((podPosition: IPodPosition) => podPosition != null)
     }
 
     return podPositions.map((podPosition: IPodPosition) => {
