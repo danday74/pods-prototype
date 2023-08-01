@@ -20,9 +20,13 @@
     button.pod-delete {
       display: none !important;
     }
+
+    button.pod-button {
+      right: 15px;
+    }
   }
 
-  &.gridstack {
+  &.gridstack, &.gridstack-preview {
     cursor: grab;
 
     button.pod-button {
@@ -30,10 +34,8 @@
     }
   }
 
-  &:not(.gridstack) {
-    button.pod-button {
-      right: 15px;
-    }
+  &.gridstack-preview {
+    border-radius: 7px;
   }
 
   button.pod-delete {
@@ -60,6 +62,10 @@
   .pod-text {
     font-size: 25px;
     user-select: text;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 240px;
+    max-height: 75px;
   }
 
   .pod-number {

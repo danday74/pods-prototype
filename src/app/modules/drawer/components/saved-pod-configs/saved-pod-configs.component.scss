@@ -11,30 +11,34 @@
     margin-bottom: 2px;
   }
 
-  .no-saved-pod-configs {
-    background-color: #FFF;
-    padding: 10px 15px 12px;
-    font-size: 15px;
-    border-radius: 0 0 5px 5px;
+  .no-saved-pod-configs-wrapper {
+    height: calc(100vh - ($headerHeight * 1px) - ($subheaderHeight * 1px) - ($footerHeight * 1px) - 238px);
 
-    & > span {
-      display: inline-block;
-      margin-bottom: 10px;
+    .no-saved-pod-configs {
+      background-color: #FFF;
+      padding: 10px 15px 12px;
+      font-size: 15px;
+      border-radius: 0 0 5px 5px;
 
-      &:last-child {
-        margin-bottom: 0;
-      }
+      & > span {
+        display: inline-block;
+        margin-bottom: 10px;
 
-      strong {
-        font-style: italic;
-        font-weight: normal;
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        strong {
+          font-style: italic;
+          font-weight: normal;
+        }
       }
     }
   }
 
   .grid-wrapper {
     overflow-y: auto;
-    height: calc(100vh - ($headerHeight * 1px) - ($subheaderHeight * 1px) - ($footerHeight * 1px) - 168px);
+    height: calc(100vh - ($headerHeight * 1px) - ($subheaderHeight * 1px) - ($footerHeight * 1px) - 238px);
     font-size: 15px;
     // background-color: #FFF;
 
