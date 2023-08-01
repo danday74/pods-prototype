@@ -4,3 +4,5 @@
 
 ng build --base-href "https://danday74.github.io/pods-prototype/"
 npx angular-cli-ghpages --dir=dist/pods
+
+echo "Deployed app at https://danday74.github.io/pods-prototype/route1"
