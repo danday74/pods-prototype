@@ -1,0 +1,102 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+$createPodModalBorderRadius: 5;
+
+.create-pod-modal-overlay {
+  @include modalOverlay;
+
+  .create-pod-modal {
+
+    border-radius: $createPodModalBorderRadius * 1px;
+    border: 1px outset #777;
+
+    .create-pod-modal-header {
+      @include modalHeader($createPodModalBorderRadius);
+    }
+
+    .create-pod-modal-body {
+      background-color: #FFF;
+      padding: 20px;
+
+      .form-switch-blocks {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        margin-top: 15px;
+        column-gap: 5px;
+      }
+
+      .form-switch-block-single {
+        width: 70%;
+        margin: 5px auto 0;
+      }
+
+      .form-switch-block {
+        display: grid;
+        grid-template-columns: 1fr 50px 1fr;
+        background-color: #EEE;
+        border-radius: 5px;
+
+        button {
+          padding: 5px 0;
+          border: none;
+          background-color: transparent;
+        }
+
+        .cell {
+          height: 100%;
+          display: flex;
+          align-items: center;
+
+          &.active {
+            color: $primroseHillYellow;
+            text-shadow: 1px 1px 1px #000;
+          }
+
+          &.reactive {
+            color: #000;
+          }
+
+          &:not(.reactive):not(.active) {
+            color: #AAA;
+          }
+        }
+
+        .cell-lhs {
+          // background-color: #DDD;
+          justify-content: flex-end;
+
+          .light-mode-icon {
+            margin-right: 3px;
+          }
+        }
+
+        .cell-center {
+          // background-color: #CCC;
+          justify-content: center;
+
+          input {
+            position: relative;
+            top: -2px;
+          }
+        }
+
+        .cell-rhs {
+          // background-color: #DDD;
+          justify-content: flex-start;
+        }
+      }
+
+      .preview {
+        margin-top: 15px;
+        width: 300px;
+        height: 178px;
+      }
+    }
+
+    .create-pod-modal-footer {
+      @include modalFooter($createPodModalBorderRadius);
+    }
+  }
+}

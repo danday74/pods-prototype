@@ -1,0 +1,56 @@
+<div class="create-pod-modal-overlay">
+  <div class="create-pod-modal">
+
+    <div class="create-pod-modal-header">
+      <span class="material-icons icon">add_circle_outline</span>
+      <span class="text">Create Pod</span>
+    </div>
+
+    <div class="create-pod-modal-body">
+
+      <input class="form-control" placeholder="Pod Name" maxlength="36" [(ngModel)]="pod.text" (keyup.enter)="createPod()">
+
+      <div class="form-switch-blocks">
+
+        <div class="form-switch-block">
+          <button class="cell cell-lhs" [class.active]="!pod.dark" (click)="clickSun()">
+            <span class="material-icons light-mode-icon">light_mode</span>
+          </button>
+          <div class="form-check form-switch cell cell-center">
+            <input class="form-check-input" type="checkbox" role="switch" [(ngModel)]="pod.dark">
+          </div>
+          <button class="cell cell-rhs" [class.active]="pod.dark" (click)="clickMoon()">
+            <span class="material-icons">dark_mode</span>
+          </button>
+        </div>
+
+        <div class="form-switch-block">
+          <button class="cell cell-lhs" [class.reactive]="!go" (click)="clickView()">View</button>
+          <div class="form-check form-switch cell cell-center">
+            <input class="form-check-input" type="checkbox" role="switch" [ngModel]="go" (ngModelChange)="toggleViewGo()">
+          </div>
+          <button class="cell cell-rhs" [class.reactive]="go" (click)="clickGo()">Go</button>
+        </div>
+      </div>
+
+      <div class="form-switch-block-single">
+        <div class="form-switch-block">
+          <button class="cell cell-lhs" [class.reactive]="!stats" (click)="clickStatsOff()">Stats Off</button>
+          <div class="form-check form-switch cell cell-center">
+            <input class="form-check-input" type="checkbox" role="switch" [ngModel]="stats" (ngModelChange)="toggleStats()">
+          </div>
+          <button class="cell cell-rhs" [class.reactive]="stats" (click)="clickStatsOn()">Stats On</button>
+        </div>
+      </div>
+
+      <div class="preview">
+        <app-pod [pod]="pod" cssClass="gridstack-preview"></app-pod>
+      </div>
+    </div>
+
+    <div class="create-pod-modal-footer">
+      <button class="cancel-btn" (click)="cancelCreatePod()">Cancel</button>
+      <button class="apply-btn" (click)="createPod()" [disabled]="!pod.text || pod.text.trim().length === 0">Create</button>
+    </div>
+  </div>
+</div>
