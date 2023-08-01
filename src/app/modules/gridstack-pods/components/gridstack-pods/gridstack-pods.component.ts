@@ -45,7 +45,7 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     ).subscribe((message: IMessage) => {
       switch (message.name) {
         case 'activate-saved-pod-config-gridstack':
-          this.activateSavedPodConfig(message.payload)
+          this.activateSavedPodConfig(message.payload.podPositions)
           break
         case 'add-pod':
           this.addPod(message.payload)
@@ -54,7 +54,7 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
           this.deletePod(message.payload)
           break
         case 'extra-pods':
-          this.updateInactivePods()
+          this.activateSavedPodConfig(this.getPodPositions())
           break
         case 'save-pods-apply':
           this.savePodConfig(message.payload.name)
@@ -70,10 +70,10 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
     })
   }
 
-  private activateSavedPodConfig(savedPodConfig: ISavedPodConfig) {
+  private activateSavedPodConfig(podPositions: IPodPosition[]) {
     this.grid.removeAll()
     this.grid.batchUpdate(true)
-    savedPodConfig.podPositions.forEach((podPosition: IPodPosition) => {
+    podPositions.forEach((podPosition: IPodPosition) => {
       const pods: IPod[] = getPods()
       const pod: IPod = find(pods, {id: podPosition.id})
       const widget: NgGridStackWidget = this.getWidget(pod, podPosition)
