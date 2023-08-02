@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core'
 import * as Highcharts from 'highcharts'
 
+// https://github.com/highcharts/highcharts-angular
+
 @Component({
   selector: 'app-graph',
   templateUrl: './graph.component.html',
