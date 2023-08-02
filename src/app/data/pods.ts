@@ -1,6 +1,7 @@
 import { IPod } from '../interfaces/i-pod'
-import { kebabCase, sortBy } from 'lodash-es'
+import { cloneDeep, findIndex, kebabCase, sortBy } from 'lodash-es'
 import { getRandomNumber } from '../utils/number-utils'
+import { moveItemInArray } from '@angular/cdk/drag-drop'
 
 const podz: IPod[] = [
   // specials
@@ -56,7 +57,7 @@ const podz: IPod[] = [
     type: 'normal',
     number: 0,
     buttonText: 'View',
-    dark: false,
+    dark: true,
     addedByHuman: false
   },
   {
@@ -209,8 +210,21 @@ const pods: IPod[] = podz.map((pod: IPod) => {
   return pod
 })
 
+const move = (podz: IPod[], id: string, toPos: number): IPod[] => {
+  const fromPos: number = findIndex(podz, {id})
+  if (fromPos != null) {
+    moveItemInArray(podz, fromPos, toPos)
+    return cloneDeep(podz)
+  } else {
+    return podz
+  }
+}
+
 export const getPods = (): IPod[] => {
   const strExtraPods: string = localStorage.getItem('extra-pods')
   const extraPods: IPod[] = strExtraPods ? JSON.parse(strExtraPods) : []
-  return sortBy([...pods, ...extraPods], [(pod: IPod) => pod.text.toLowerCase()])
+  let podz: IPod[] = sortBy([...pods, ...extraPods], [(pod: IPod) => pod.text.toLowerCase()])
+  podz = move(podz, 'raynes-park-office-map', 0)
+  podz = move(podz, 'business-activity-graph', 8)
+  return podz
 }
