@@ -28,10 +28,6 @@ export class RaynesParkComponent {
       lat: this.center.lat,
       lng: this.center.lng
     },
-    label: {
-      color: 'black',
-      text: null
-    },
     title: 'Visit our Raynes Park Office',
     options: {animation: google.maps.Animation.DROP}
   }]

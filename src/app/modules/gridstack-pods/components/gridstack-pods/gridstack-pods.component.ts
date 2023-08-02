@@ -12,6 +12,8 @@ import { IPodPosition } from '../../../../interfaces/i-pod-position'
 import { StorageService } from '../../../../services/storage.service'
 import { find, sortBy } from 'lodash-es'
 import { ISavedPodConfig } from '../../../../interfaces/i-saved-pod-config'
+import { PodGraphComponent } from '../../../pod/components/pod-graph/pod-graph.component'
+import { PodMapComponent } from '../../../pod/components/pod-map/pod-map.component'
 
 @Component({
   selector: 'app-gridstack-pods',
@@ -37,7 +39,7 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
   }
 
   ngOnInit() {
-    GridstackComponent.addComponentToSelectorType([PodComponent])
+    GridstackComponent.addComponentToSelectorType([PodComponent, PodGraphComponent, PodMapComponent])
 
     this.messageService.message$.pipe(
         takeUntil(this.unsubscribe$),
@@ -182,10 +184,23 @@ export class GridstackPodsComponent extends DestroyerComponent implements OnInit
       y,
       w,
       h,
-      selector: 'app-pod',
+      selector: this.getSelector(pod.type),
       input: {pod, cssClass: 'gridstack'},
       id: `${pod.id}-${pod.dark ? 'dark' : 'light'}`
     }
     return widget
+  }
+
+  private getSelector(podType: string): string {
+    switch (podType) {
+      case 'normal':
+        return 'app-pod'
+      case 'graph':
+        return 'app-pod-graph'
+      case 'map':
+        return 'app-pod-map'
+      default:
+        return null
+    }
   }
 }

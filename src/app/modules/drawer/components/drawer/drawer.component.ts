@@ -24,8 +24,8 @@ export class DrawerComponent extends DestroyerComponent implements OnInit {
 
   ngOnInit() {
     this.messageService.message$.pipe(
-      takeUntil(this.unsubscribe$),
-      filter((message: IMessage) => message.name === 'inactive-pods')
+        takeUntil(this.unsubscribe$),
+        filter((message: IMessage) => message.name === 'inactive-pods')
     ).subscribe((message: IMessage) => {
       this.inactivePods = message.payload.pods
       this.willItFit = message.payload.willItFit
@@ -40,7 +40,7 @@ export class DrawerComponent extends DestroyerComponent implements OnInit {
 
   activatePod(pod: IPod) {
     this.messageService.message('add-pod', pod)
-    this.inactivePod = {id: null, text: 'Add Pod', number: null, buttonText: null, dark: null, addedByHuman: null}
+    this.inactivePod = {id: null, text: 'Add Pod', type: null, number: null, buttonText: null, dark: null, addedByHuman: null}
   }
 
   createPod() {

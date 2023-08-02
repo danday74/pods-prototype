@@ -15,6 +15,7 @@ export class CreatePodModalComponent {
   pod: IPod = {
     id: null,
     text: null,
+    type: 'normal',
     number: null,
     buttonText: 'View',
     dark: false,

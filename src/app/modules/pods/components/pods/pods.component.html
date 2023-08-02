@@ -1,7 +1,15 @@
 <div class="grid-wrapper">
   <div class="grid">
     <ng-container *ngFor="let pod of pods">
-      <app-pod [pod]="pod" cssClass="css-grid"></app-pod>
+      <ng-container *ngIf="pod.type === 'normal'">
+        <app-pod [pod]="pod" cssClass="css-grid"></app-pod>
+      </ng-container>
+      <ng-container *ngIf="pod.type === 'graph'">
+        <app-pod-graph [pod]="pod" cssClass="css-grid"></app-pod-graph>
+      </ng-container>
+      <ng-container *ngIf="pod.type === 'map'">
+        <app-pod-map [pod]="pod" cssClass="css-grid"></app-pod-map>
+      </ng-container>
     </ng-container>
   </div>
 </div>
