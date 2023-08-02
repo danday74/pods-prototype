@@ -3,9 +3,39 @@ import { kebabCase, sortBy } from 'lodash-es'
 import { getRandomNumber } from '../utils/number-utils'
 
 const podz: IPod[] = [
+  // specials
+  {
+    id: null,
+    text: 'Business Activity Graph',
+    type: 'graph',
+    number: null,
+    buttonText: null,
+    dark: null,
+    addedByHuman: false
+  },
+  {
+    id: null,
+    text: 'Performance Graph',
+    type: 'graph',
+    number: null,
+    buttonText: null,
+    dark: null,
+    addedByHuman: false
+  },
+  {
+    id: null,
+    text: 'Raynes Park Office Map',
+    type: 'map',
+    number: null,
+    buttonText: null,
+    dark: null,
+    addedByHuman: false
+  },
+  // first batch
   {
     id: null,
     text: 'New Jobs',
+    type: 'normal',
     number: 0,
     buttonText: 'Go',
     dark: true,
@@ -14,6 +44,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'My Unfilled Jobs',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: false,
@@ -22,6 +53,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'In Progress Bookings',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: false,
@@ -30,6 +62,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Messages',
+    type: 'normal',
     number: 0,
     buttonText: 'Go',
     dark: false,
@@ -38,6 +71,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Unsubmitted Timesheets',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: false,
@@ -46,6 +80,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Unauthorised Timesheets',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: false,
@@ -54,6 +89,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Rejected Timesheets',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: false,
@@ -62,6 +98,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Timesheet Guide',
+    type: 'normal',
     number: null,
     buttonText: 'Go',
     dark: true,
@@ -70,15 +107,17 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'XMS User Guide',
+    type: 'normal',
     number: null,
     buttonText: 'Go',
     dark: true,
     addedByHuman: false
   },
-  // MORE
+  // second batch
   {
     id: null,
     text: 'Active Extensions',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: true,
@@ -87,6 +126,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Audit Packs',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: false,
@@ -95,6 +135,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Available and Eligible Candidates',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: true,
@@ -103,6 +144,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Interview Requests',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: true,
@@ -111,6 +153,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'My Interviews Within the Next 7 Days',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: true,
@@ -119,6 +162,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'New Orders',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: false,
@@ -127,6 +171,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Non Chargeable Timesheets',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: false,
@@ -135,6 +180,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Other Tasks',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: true,
@@ -143,6 +189,7 @@ const podz: IPod[] = [
   {
     id: null,
     text: 'Submissions',
+    type: 'normal',
     number: 0,
     buttonText: 'View',
     dark: false,

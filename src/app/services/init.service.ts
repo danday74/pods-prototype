@@ -1,12 +1,28 @@
 import { Injectable } from '@angular/core'
 import * as Highcharts from 'highcharts'
+import * as Color from 'color'
+import { appColors } from '../utils/app-colors'
+import { reduce } from 'lodash-es'
+import HC_exporting from 'highcharts/modules/exporting'
+import HC_3d from 'highcharts/highcharts-3d'
+
+HC_exporting(Highcharts)
+HC_3d(Highcharts)
 
 @Injectable({providedIn: 'root'})
 export class InitService {
 
   init(): Promise<boolean> {
+
+    // const colors: string[] = Highcharts.getOptions().colors as string[]
+
+    const colors: string[] = reduce(appColors, (acc: any, color: Color /*, key: string*/) => {
+      // if (key === 'headerBlue') color = color.lighten(1)
+      return [...acc, color.hex()]
+    }, [])
+
     Highcharts.setOptions({
-      colors: Highcharts.map(Highcharts.getOptions().colors, (color: any) => {
+      colors: colors.map((color: any) => {
         // noinspection JSUnresolvedReference
         return {
           radialGradient: {

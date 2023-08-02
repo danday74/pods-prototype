@@ -26,6 +26,8 @@
     border-radius: 5px;
     margin: 0 10px;
     text-decoration: none;
+    min-width: 110px;
+    text-align: center;
 
     &.active {
       text-decoration: underline;
