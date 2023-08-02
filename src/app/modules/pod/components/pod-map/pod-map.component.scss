@@ -1,0 +1,39 @@
+@import 'src/styles/colors';
+@import 'src/styles/mixins';
+
+.pods-map-wrapper {
+  background-color: $podLightColor;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.css-grid {
+    border-radius: 7px;
+
+    button.pod-delete {
+      display: none !important;
+    }
+
+    .pods-map {
+      height: 95%;
+      width: 95%;
+    }
+  }
+
+  .pods-map {
+    height: 100%;
+    width: 100%;
+  }
+
+  button.pod-delete {
+    @include podDelete;
+  }
+
+  &:hover {
+    button.pod-delete {
+      display: block;
+    }
+  }
+}

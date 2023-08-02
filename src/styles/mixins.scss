@@ -95,3 +95,18 @@ $scrollColor: #A1A1A1;
     }
   }
 }
+
+@mixin podDelete {
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #000;
+  display: none;
+
+  &:hover {
+    font-weight: bold;
+  }
+}
