@@ -7,6 +7,7 @@ export class InitService {
   init(): Promise<boolean> {
     Highcharts.setOptions({
       colors: Highcharts.map(Highcharts.getOptions().colors, (color: any) => {
+        // noinspection JSUnresolvedReference
         return {
           radialGradient: {
             cx: 0.5,
