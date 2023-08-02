@@ -1,0 +1,8 @@
+$googleMapsPaddingTop: 20;
+
+.google-maps-wrapper {
+  margin: 0 auto;
+  padding-top: $googleMapsPaddingTop * 1px;
+  width: 500px;
+  height: (500 + $googleMapsPaddingTop) * 1px;
+}

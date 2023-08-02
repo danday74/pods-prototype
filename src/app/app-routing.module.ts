@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: () => import('./routes/route3/route3.module').then(m => m.Route3Module)
   },
   {
+    path: 'route4',
+    loadChildren: () => import('./routes/route4/route4.module').then(m => m.Route4Module)
+  },
+  {
     path: '**',
     redirectTo: 'route1'
   }
