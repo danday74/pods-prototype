@@ -210,7 +210,7 @@ const pods: IPod[] = podz.map((pod: IPod) => {
   return pod
 })
 
-const move = (podz: IPod[], id: string, toPos: number): IPod[] => {
+const movePod = (podz: IPod[], id: string, toPos: number): IPod[] => {
   const fromPos: number = findIndex(podz, {id})
   if (fromPos != null) {
     moveItemInArray(podz, fromPos, toPos)
@@ -224,7 +224,7 @@ export const getPods = (): IPod[] => {
   const strExtraPods: string = localStorage.getItem('extra-pods')
   const extraPods: IPod[] = strExtraPods ? JSON.parse(strExtraPods) : []
   let podz: IPod[] = sortBy([...pods, ...extraPods], [(pod: IPod) => pod.text.toLowerCase()])
-  podz = move(podz, 'raynes-park-office-map', 0)
-  podz = move(podz, 'business-activity-graph', 8)
+  podz = movePod(podz, 'raynes-park-office-map', 0)
+  podz = movePod(podz, 'business-activity-graph', 8)
   return podz
 }
