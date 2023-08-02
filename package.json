@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
     "bootstrap": "^5.3.1",
+    "date-fns": "^2.30.0",
     "gridstack": "^8.4.0",
     "highcharts": "^11.1.0",
     "highcharts-angular": "^3.1.2",
