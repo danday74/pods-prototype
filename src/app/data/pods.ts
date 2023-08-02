@@ -105,7 +105,7 @@ const podz: IPod[] = [
     text: 'Interview Requests',
     number: 0,
     buttonText: 'View',
-    dark: false,
+    dark: true,
     addedByHuman: false
   },
   {
