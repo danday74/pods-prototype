@@ -15,6 +15,7 @@ export class RaynesParkComponent {
 
   options: google.maps.MapOptions = {
     zoomControl: true,
+    streetViewControl: false,
     disableDoubleClickZoom: false,
     mapTypeId: 'hybrid',
     maxZoom: 20,

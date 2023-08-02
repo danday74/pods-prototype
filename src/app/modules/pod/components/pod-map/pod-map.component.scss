@@ -28,7 +28,7 @@
   }
 
   button.pod-delete {
-    @include podDelete;
+    @include podDelete(4, 55, #FFF);
   }
 
   &:hover {

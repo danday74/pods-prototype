@@ -9,6 +9,10 @@
   bottom: 15px !important;
 }
 
-.grid-stack-item[gs-id $= "dark"] > .ui-resizable-se {
+.grid-stack-item[gs-id $= 'dark'] > .ui-resizable-se {
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.grid-stack-item[gs-id = 'raynes-park-office-map-light'] > .ui-resizable-se {
   filter: brightness(0) saturate(100%) invert(100%);
 }

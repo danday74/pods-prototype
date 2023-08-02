@@ -96,14 +96,14 @@ $scrollColor: #A1A1A1;
   }
 }
 
-@mixin podDelete {
+@mixin podDelete($top, $right, $color) {
   position: absolute;
-  top: 2px;
-  right: 3px;
+  top: $top * 1px;
+  right: $right * 1px;
   background-color: transparent;
   border: none;
   font-size: 16px;
-  color: #000;
+  color: $color;
   display: none;
 
   &:hover {
