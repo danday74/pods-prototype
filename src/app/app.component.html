@@ -11,7 +11,9 @@
 <div class="main" [ngClass]="drawerOpen ? 'drawer-open' : 'drawer-close'">
   <router-outlet></router-outlet>
 </div>
-<div class="footer">&nbsp;</div>
+<div class="footer">
+  <span class="footer-text">&copy; Business 2013 &ndash; {{ year }} App Version 0.0.0</span>
+</div>
 
 <ng-container *ngIf="showSavePodsModal">
   <app-save-pods-modal [type]="savePodsType" (cancel)="cancelSavePods()" (apply)="applySavePods($event)"></app-save-pods-modal>

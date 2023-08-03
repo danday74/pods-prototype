@@ -21,6 +21,7 @@ export class AppComponent extends DestroyerComponent implements OnInit {
   showSavePodsModal = false
   savePodsType: string
   drawerOpen = this.storageService.getItem('drawer-open', false)
+  year: number = new Date().getFullYear()
 
   private readonly ROUTE_CLASS_PREFIX = 'route-'
 
