@@ -55,6 +55,37 @@ $animationSpeed: 800ms;
     height: 100%;
     padding: 20px 11px 20px 20px;
 
+    .pod-item {
+      display: flex;
+
+      .pod-item-icon {
+        position: relative;
+        left: -6px;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &.pod-item-icon-normal {
+          font-size: 23px;
+        }
+
+        &.pod-item-icon-map {
+          font-size: 26px;
+        }
+
+        &.pod-item-icon-graph {
+          font-size: 24px;
+        }
+      }
+
+      .pod-item-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 5px;
+      }
+    }
+
     .btn-create-pod {
       background-color: $podDarkColor;
       color: #FFF;

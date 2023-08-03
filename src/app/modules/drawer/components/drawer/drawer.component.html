@@ -6,7 +6,16 @@
     <p-dropdown placeholder="Add Pod" optionLabel="text" filterBy="text" styleClass="add-pod-dropdown" panelStyleClass="add-pod-dropdown-panel"
                 scrollHeight="300px"
                 [options]="inactivePods" [filter]="true" [disabled]="!willItFit" [resetFilterOnHide]="true"
-                [ngModel]="inactivePod" (ngModelChange)="activatePod($event)"></p-dropdown>
+                [ngModel]="inactivePod" (ngModelChange)="activatePod($event)">
+      <ng-template let-pod pTemplate="item">
+        <div class="pod-item">
+          <span *ngIf="pod.type === 'normal'" class="material-icons pod-item-icon pod-item-icon-normal">wysiwyg</span>
+          <span *ngIf="pod.type === 'map'" class="material-icons pod-item-icon pod-item-icon-map">location_on</span>
+          <span *ngIf="pod.type === 'graph'" class="material-icons-round pod-item-icon pod-item-icon-graph">bar_chart</span>
+          <div class="pod-item-text" [title]="pod.text">{{ pod.text }}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
 
     <hr>
     <app-saved-pod-configs></app-saved-pod-configs>
