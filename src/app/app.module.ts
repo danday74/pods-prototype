@@ -7,6 +7,7 @@ import { SavePodsModalModule } from './modules/save-pods-modal/save-pods-modal.m
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CreatePodModalModule } from './modules/create-pod-modal/create-pod-modal.module'
 import { InitService } from './services/init.service'
+import { ToastrModule } from 'ngx-toastr'
 
 const initApp = (initService: InitService) => {
   return (): Promise<boolean> => {
@@ -24,7 +25,12 @@ const initApp = (initService: InitService) => {
     AppRoutingModule,
     NgOptimizedImage,
     SavePodsModalModule,
-    CreatePodModalModule
+    CreatePodModalModule,
+    ToastrModule.forRoot({
+      timeOut: 8000,
+      progressBar: true,
+      enableHtml: true
+    })
   ],
   providers: [
     InitService,

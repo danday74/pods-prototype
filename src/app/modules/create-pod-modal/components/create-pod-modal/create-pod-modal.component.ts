@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core'
 import { IPod } from '../../../../interfaces/i-pod'
 import { kebabCase } from 'lodash-es'
 import { getRandomNumber } from '../../../../utils/number-utils'
+import { ToastrService } from 'ngx-toastr'
 
 @Component({
   selector: 'app-create-pod-modal',
@@ -25,6 +26,8 @@ export class CreatePodModalComponent {
   @Output() cancel = new EventEmitter<void>()
   @Output() create = new EventEmitter<IPod>()
 
+  constructor(private toastr: ToastrService) {}
+
   cancelCreatePod() {
     this.cancel.emit()
   }
@@ -39,6 +42,7 @@ export class CreatePodModalComponent {
         number: this.stats ? getRandomNumber(99) : null
       }
       this.create.emit(this.pod)
+      this.toastr.success(`Your new pod <strong>${this.pod.text}</strong> is available in the <strong>Add Pod</strong> dropdown`, 'Create Pod')
     }
   }
 
